@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="table-responsive-sm">
+    <table class="table table-bordered">
+        <thead>
+            <tr style="background:rgb(41, 43, 44);">
+                <th style="text-align: center;color:white;">Customer Name</th>
+                <th style="text-align: center;color:white;">Shipped From</th>
+                <th style="text-align: center;color:white;">Shipping ID</th>
+                <th style="text-align: center;color:white;">Destination</th>
+                <th style="text-align: center;color:white;">Status</th>
+            </tr>
+        </thead>
+
+        {% if packages %}
+        <tbody>
+    {% for package in packages %}
+    <tr style="text-align: center;" >
+        <td>{{package.customer}}<br>
+            {{package.date}}
+        </td>
+        <td>{{package.shipped_from}}</td>
+        <td style="background:rgb(92, 184, 92);color:white;">{{package.shipped_id}}</td>
+        <td>{{package.destination}}</td>
+        <td><button class="btn dark btn-sm ">{{package.status}}</button></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+    {% else %}
+        <p style="color:rgb(217, 83, 79)">No Results Found</p>
+    {% endif %}
+
+    </table>
+
+
+</div>
+{% endblock %}
